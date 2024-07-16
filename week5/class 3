@@ -1,0 +1,33 @@
+package TwoDArrays;
+
+import java.util.Scanner;
+
+public class Ex3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int arr[][]= new int[N][M];
+        System.out.println("Enter the elements");
+        for(int i=0; i<N; i++){
+            for(int j=0; j<M; j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+
+        for(int i=0; i<N; i++){
+            for(int j=0; j<M; j++){
+               if(i==0 || i==N-1 || j==0 || j==M-1 )
+               {
+                   System.out.print(arr[i][j]+ " ");
+               }
+               else
+                   System.out.print("  ");
+
+            }
+            System.out.println();
+        }
+
+    }
+}
+
