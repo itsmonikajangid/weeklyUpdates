@@ -1,0 +1,154 @@
+package LinnkedListPractice2;
+
+
+public class BasicsOfSinglyLinkedList {
+    class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=next;
+        }
+    }
+    Node head;
+    BasicsOfSinglyLinkedList(){
+        head=null;
+    }
+
+    void insertAtEnd(int data){
+        Node newNode=new Node(data);
+
+        if(head==null)
+            head=newNode;
+        else {
+            Node temp=head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+
+    }
+
+    void deleteAnyNumber(int data){
+        Node temp=head;
+        Node prev=null;
+        if(temp.data==data){
+            head=temp.next;
+        }
+        else {
+            while(temp!=null && temp.data!=data){
+                prev=temp;
+                temp=temp.next;
+            }
+        }
+        if(temp==null)
+            return;
+        prev.next=temp.next;
+    }
+
+    void deleteHead(){
+        head=head.next;
+    }
+
+    void deleteTail(){
+        Node temp=head;
+        Node prev=null;
+        if(head==null)
+            return;
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        while(temp.next!=null){
+            prev=temp;
+            temp=temp.next;
+        }
+
+        prev.next=null;
+    }
+
+    void deleteEntireLinkedList(){
+        Node temp=head;
+        while(temp.next!=null){
+            Node curr=temp.next;
+//            temp.next=null;
+            temp=curr;
+        }
+    }
+
+     void removeDuplicate() {
+         Node temp = head;
+         while(temp!=null && temp.next!=null){
+             Node curr = temp;
+            while(curr.next!=null){
+                if(temp.data==curr.next.data){
+                    curr.next=curr.next.next;
+                }
+                else
+                    curr=curr.next;
+            }
+             temp=temp.next;
+         }
+
+     }
+
+     void getNthNode(int index){
+            Node temp=head;
+
+            int count=0;
+         while (temp != null) {
+             if (count == index) {
+                 System.out.println("Node at index " + index + " has data: " + temp.data);
+                 return;
+             }
+             count++;
+             temp = temp.next;
+         }
+
+     }
+
+     void intersectionOfTwoLinkedList(){
+
+     }
+
+    void printData(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data + " ");
+            temp=temp.next;
+        }
+    }
+    public static void main(String[] args) {
+        BasicsOfSinglyLinkedList obj = new BasicsOfSinglyLinkedList();
+        obj.insertAtEnd(10);
+        obj.insertAtEnd(20);
+        obj.insertAtEnd(30);
+        obj.insertAtEnd(40);
+        obj.insertAtEnd(40);
+        obj.insertAtEnd(60);
+        obj.insertAtEnd(70);
+        obj.insertAtEnd(80);
+        obj.printData();
+        System.out.println();
+//        System.out.println("Deleting any number");
+//        obj.deleteAnyNumber(40);
+//        obj.printData();
+//        System.out.println();
+//        System.out.println("deleting head");
+//        obj.deleteHead();
+//        obj.printData();
+        System.out.println();
+        System.out.println("Delete Entire LinkedList");
+        obj.deleteEntireLinkedList();
+//
+//        System.out.println();
+//        System.out.println("deleting tail");
+//        obj.deleteTail();
+//        obj.printData();
+//        obj.removeDuplicate();
+//        obj.printData();
+//         obj.getNthNode(3);
+//         obj.printData();
+    }
+}
